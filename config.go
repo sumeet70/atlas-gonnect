@@ -33,6 +33,7 @@ func NewConfig(configFile io.Reader) (*Profile, string, error) {
 	runtimeViper := viper.New()
 	runtimeViper.SetDefault("CurrentProfile", "dev")
 	runtimeViper.BindEnv("CurrentProfile", "GONNECT_PROFILE")
+	runtimeViper.BindEnv("DATABASE_URL", "DATABASE_URL")
 	runtimeViper.SetConfigType("json")
 	config := &Config{}
 
