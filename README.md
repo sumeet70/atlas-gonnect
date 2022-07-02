@@ -1,6 +1,6 @@
 # atlas-gonnect : An Atlassian Connect Framework written in Golang
 
-## Overview [![GoDoc](https://godoc.org/github.com/craftamap/atlas-gonnect?status.svg)](https://godoc.org/github.com/craftamap/atlas-gonnect) [![Go Report Card](https://goreportcard.com/badge/github.com/craftamap/atlas-gonnect)](https://goreportcard.com/report/github.com/craftamap/atlas-gonnect) [![Coverage Status](https://coveralls.io/repos/github/craftamap/atlas-gonnect/badge.svg?branch=master)](https://coveralls.io/github/craftamap/atlas-gonnect?branch=master)
+## Overview [![GoDoc](https://godoc.org/github.com/sumeet70/atlas-gonnect?status.svg)](https://godoc.org/github.com/sumeet70/atlas-gonnect) [![Go Report Card](https://goreportcard.com/badge/github.com/sumeet70/atlas-gonnect)](https://goreportcard.com/report/github.com/sumeet70/atlas-gonnect) [![Coverage Status](https://coveralls.io/repos/github/sumeet70/atlas-gonnect/badge.svg?branch=master)](https://coveralls.io/github/sumeet70/atlas-gonnect?branch=master)
 
 Atlas-Gonnect is an Atlassian Connect Framework written in Golang, inspired by the [Atlassian Connect Spring Boot Framework](https://bitbucket.org/atlassian/atlassian-connect-spring-boot/src/master/)  as well as the [Atlassian Connect Express Framework](https://bitbucket.org/atlassian/atlassian-connect-express/src/master/). The implementation of Atlas-Gonnect is heavily inspired by the letter one.
 
@@ -9,7 +9,7 @@ This project is not associated with Atlassian.
 ## Install
 
 ```
-go get github.com/craftamap/atlas-gonnect
+go get github.com/sumeet70/atlas-gonnect
 ```
 
 ## Example
@@ -41,13 +41,13 @@ router := mux.NewRouter()
 router.Use(middleware.NewRequestMiddleware(addon, make(map[string]string)))
 
 // Register the default routes of atlas-gonnect; note that routes is the package
-// github.com/craftamap/atlas-gonnect/routes
+// github.com/sumeet70/atlas-gonnect/routes
 routes.RegisterRoutes(addon, router)
 
 // To register an route secured by JWT Authentification, use the AuthentificationMiddleware
 router.Handle(
         "/hello-world",
-        // note that middleware is the package github.com/craftamap/atlas-gonnect/middleware
+        // note that middleware is the package github.com/sumeet70/atlas-gonnect/middleware
         middleware.NewAuthenticationMiddleware(addon, false)(
                 http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
                         // Do stuff here
@@ -58,7 +58,7 @@ http.ListenAndServe(":"+strconv.Itoa(addon.Config.Port), router)
 ```
 
 
-For a full example, see my [atlas-gonnect-confluence-example](https://github.com/craftamap/atlas-gonnect-confluence-example).
+For a full example, see my [atlas-gonnect-confluence-example](https://github.com/sumeet70/atlas-gonnect-confluence-example).
 
 ### request context
 
