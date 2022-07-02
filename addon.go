@@ -11,8 +11,8 @@ import (
 	"runtime"
 	"text/template"
 
+	"github.com/craftamap/atlas-gonnect/store"
 	"github.com/sirupsen/logrus"
-	"github.com/sumeet70/atlas-gonnect/store"
 )
 
 var LOG = logrus.New()

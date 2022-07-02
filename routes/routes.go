@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"net/http"
 
+	gonnect "github.com/craftamap/atlas-gonnect"
+	"github.com/craftamap/atlas-gonnect/middleware"
+	"github.com/craftamap/atlas-gonnect/store"
+	"github.com/craftamap/atlas-gonnect/util"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	gonnect "github.com/sumeet70/atlas-gonnect"
-	"github.com/sumeet70/atlas-gonnect/middleware"
-	"github.com/sumeet70/atlas-gonnect/store"
-	"github.com/sumeet70/atlas-gonnect/util"
 )
 
 type RootHandler struct {

@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	gonnect "github.com/sumeet70/atlas-gonnect"
+	gonnect "github.com/craftamap/atlas-gonnect"
 )
 
 func SendError(w http.ResponseWriter, addon *gonnect.Addon, errorCode int, message string) {

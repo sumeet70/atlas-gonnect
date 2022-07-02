@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"strings"
 
-	gonnect "github.com/sumeet70/atlas-gonnect"
-	atlasjwt "github.com/sumeet70/atlas-gonnect/atlas-jwt"
-	"github.com/sumeet70/atlas-gonnect/util"
+	gonnect "github.com/craftamap/atlas-gonnect"
+	atlasjwt "github.com/craftamap/atlas-gonnect/atlas-jwt"
+	"github.com/craftamap/atlas-gonnect/util"
 
 	"github.com/golang-jwt/jwt"
 )

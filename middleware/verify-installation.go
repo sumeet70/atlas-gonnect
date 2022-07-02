@@ -12,10 +12,10 @@ import (
 	"path"
 	"time"
 
+	gonnect "github.com/craftamap/atlas-gonnect"
+	"github.com/craftamap/atlas-gonnect/util"
 	"github.com/golang-jwt/jwt"
 	"github.com/patrickmn/go-cache"
-	gonnect "github.com/sumeet70/atlas-gonnect"
-	"github.com/sumeet70/atlas-gonnect/util"
 )
 
 const (
