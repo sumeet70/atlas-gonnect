@@ -53,8 +53,9 @@ func NewConfig(configFile io.Reader) (*Profile, string, error) {
 	if profile, ok := config.Profiles[config.CurrentProfile]; !ok {
 		return nil, "", ErrConfigProfileNotFound
 	} else {
-		if viper.IsSet("DATABASE_URL") {
-			profile.Store.DatabaseUrl = viper.GetString("DATABASE_URL")
+		runtimeViper.BindEnv("DatabaseUrl", "DATABASE_URL")
+		if runtimeViper.IsSet("DatabaseUrl") {
+			profile.Store.DatabaseUrl = runtimeViper.GetString("DatabaseUrl")
 		}
 		return &profile, config.CurrentProfile, nil
 	}
