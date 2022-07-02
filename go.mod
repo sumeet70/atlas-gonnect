@@ -1,4 +1,4 @@
-module github.com/craftamap/atlas-gonnect
+module github.com/sumeet70/atlas-gonnect
 
 go 1.14
 

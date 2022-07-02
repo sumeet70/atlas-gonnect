@@ -7,10 +7,10 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/craftamap/atlas-gonnect/store"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/jinzhu/gorm"
+	"github.com/sumeet70/atlas-gonnect/store"
 )
 
 func TestNewAddon(t *testing.T) {
@@ -20,7 +20,7 @@ func TestNewAddon(t *testing.T) {
 	}
 	nameL := "example"
 	name := &nameL
-	keyL := "com.github.craftamap.atlassian-gonnect.example"
+	keyL := "com.github.sumeet70.atlassian-gonnect.example"
 	key := &keyL
 
 	testCases := []struct {
@@ -71,7 +71,7 @@ func TestNewAddon(t *testing.T) {
 		},
 		// Successful test
 		{
-			descriptorReader: strings.NewReader(`{"name":"example", "key": "com.github.craftamap.atlassian-gonnect.example"}`),
+			descriptorReader: strings.NewReader(`{"name":"example", "key": "com.github.sumeet70.atlassian-gonnect.example"}`),
 			configReader:     strings.NewReader(`{"currentProfile": "dev", "profiles": {"dev": {"baseUrl": "http://test/","port": 8080,"store": {"type": "sqlite3","databaseUrl": ":memory:"}}}}`),
 			addon: &Addon{
 				CurrentProfile: "dev",
@@ -86,7 +86,7 @@ func TestNewAddon(t *testing.T) {
 				},
 				AddonDescriptor: map[string]interface{}{
 					"name": "example",
-					"key":  "com.github.craftamap.atlassian-gonnect.example",
+					"key":  "com.github.sumeet70.atlassian-gonnect.example",
 				},
 				Name: name,
 				Key:  key,
