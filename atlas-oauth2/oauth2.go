@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/craftamap/atlas-gonnect/store"
-        "github.com/golang-jwt/jwt"
+	"github.com/golang-jwt/jwt"
+	"github.com/sumeet70/atlas-gonnect/store"
 )
 
 const JWT_CLAIM_PREFIX = "urn:atlassian:connect"

@@ -6,8 +6,8 @@ import (
 
 	"context"
 
-	gonnect "github.com/craftamap/atlas-gonnect"
-	"github.com/craftamap/atlas-gonnect/hostrequest"
+	gonnect "github.com/sumeet70/atlas-gonnect"
+	"github.com/sumeet70/atlas-gonnect/hostrequest"
 )
 
 type RequestMiddleware struct {

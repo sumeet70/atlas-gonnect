@@ -7,11 +7,11 @@ import (
 	"path/filepath"
 	"time"
 
-	gonnect "github.com/craftamap/atlas-gonnect"
-	atlasjwt "github.com/craftamap/atlas-gonnect/atlas-jwt"
-	atlasoauth2 "github.com/craftamap/atlas-gonnect/atlas-oauth2"
-	"github.com/craftamap/atlas-gonnect/store"
-        "github.com/golang-jwt/jwt"
+	"github.com/golang-jwt/jwt"
+	gonnect "github.com/sumeet70/atlas-gonnect"
+	atlasjwt "github.com/sumeet70/atlas-gonnect/atlas-jwt"
+	atlasoauth2 "github.com/sumeet70/atlas-gonnect/atlas-oauth2"
+	"github.com/sumeet70/atlas-gonnect/store"
 )
 
 type HostRequest struct {
