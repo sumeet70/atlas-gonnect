@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/golang-jwt/jwt v3.2.1+incompatible
-	github.com/google/go-cmp v0.5.5
+	github.com/google/go-cmp v0.5.8
 	github.com/gorilla/handlers v1.4.2
 	github.com/gorilla/mux v1.7.4
 	github.com/jinzhu/gorm v1.9.16

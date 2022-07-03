@@ -12,12 +12,12 @@ import (
 func TestNewTenantFromReader(t *testing.T) {
 	testCases := []struct {
 		Reader      io.Reader
-		Tenant      *Tenant
+		Tenant      *AtlassianHost
 		expectError bool
 	}{
 		{
 			Reader: strings.NewReader(`{"key":"installed-addon-key","clientKey":"unique-client-identifier","sharedSecret":"a-secret-key-not-to-be-lost","serverVersion":"server-version","pluginsVersion":"version-of-connect","baseUrl":"https://example.atlassian.net","displayUrl":"https://docs.example.com","productType":"jira","description":"AtlassianJiraathttps://example.atlassian.net","serviceEntitlementNumber":"SEN-number","eventType":"installed"}`),
-			Tenant: &Tenant{ClientKey: "unique-client-identifier",
+			Tenant: &AtlassianHost{ClientKey: "unique-client-identifier",
 				SharedSecret:   "a-secret-key-not-to-be-lost",
 				BaseURL:        "https://example.atlassian.net",
 				ProductType:    "jira",
@@ -29,7 +29,7 @@ func TestNewTenantFromReader(t *testing.T) {
 		},
 		{
 			Reader: strings.NewReader(`{"key":"installed-addon-key","clientKey":"unique-client-identifier","serverVersion":"server-version","pluginsVersion":"version-of-connect","baseUrl":"https://example.atlassian.net","displayUrl":"https://docs.example.com","productType":"jira","description":"AtlassianJiraathttps://example.atlassian.net","serviceEntitlementNumber":"SEN-number","eventType":"uninstalled"}`),
-			Tenant: &Tenant{ClientKey: "unique-client-identifier",
+			Tenant: &AtlassianHost{ClientKey: "unique-client-identifier",
 				BaseURL:        "https://example.atlassian.net",
 				ProductType:    "jira",
 				Description:    "AtlassianJiraathttps://example.atlassian.net",
@@ -40,7 +40,7 @@ func TestNewTenantFromReader(t *testing.T) {
 		},
 		{
 			Reader:      strings.NewReader(`INVALID JSON`),
-			Tenant:      &Tenant{},
+			Tenant:      &AtlassianHost{},
 			expectError: true,
 		},
 	}

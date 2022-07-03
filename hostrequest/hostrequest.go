@@ -17,7 +17,7 @@ import (
 type HostRequest struct {
 	Addon     *gonnect.Addon
 	ClientKey string
-	tenant    *store.Tenant
+	tenant    *store.AtlassianHost
 }
 
 func FromRequest(r *http.Request) (*HostRequest, error) {

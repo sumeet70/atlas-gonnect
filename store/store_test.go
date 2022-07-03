@@ -46,10 +46,10 @@ func TestSet(t *testing.T) {
 		},
 	}
 	testCases := []struct {
-		Tenant *Tenant
+		Tenant *AtlassianHost
 	}{
 		{
-			Tenant: &Tenant{ClientKey: "unique-client-identifier",
+			Tenant: &AtlassianHost{ClientKey: "unique-client-identifier",
 				SharedSecret:   "a-secret-key-not-to-be-lost",
 				BaseURL:        "https://example.atlassian.net",
 				ProductType:    "jira",
@@ -59,7 +59,7 @@ func TestSet(t *testing.T) {
 			},
 		},
 		{
-			Tenant: &Tenant{ClientKey: "unique-client-identifier",
+			Tenant: &AtlassianHost{ClientKey: "unique-client-identifier",
 				BaseURL:        "https://example.atlassian.net",
 				ProductType:    "jira",
 				Description:    "AtlassianJiraathttps://example.atlassian.net",

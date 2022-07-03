@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-type Tenant struct {
+type AtlassianHost struct {
 	ClientKey      string `json:"clientKey" gorm:"type:varchar(255);primary_key"`
 	PublicKey      string `json:"publicKey" gorm:"type:varchar(512)"`
 	SharedSecret   string `json:"sharedSecret" gorm:"type:varchar(255);NOT NULL"`
@@ -20,9 +20,13 @@ type Tenant struct {
 	EventType      string `json:"eventType" gorm:"-"`
 }
 
-func NewTenantFromReader(r io.Reader) (*Tenant, error) {
+func (AtlassianHost) TableName() string {
+	return "atlassian_host"
+}
+
+func NewTenantFromReader(r io.Reader) (*AtlassianHost, error) {
 	//TODO: Check for clientKey, any tenant must have an clientKey
-	tenant := &Tenant{}
+	tenant := &AtlassianHost{}
 	err := json.NewDecoder(r).Decode(tenant)
 	if err != nil {
 		return nil, err
