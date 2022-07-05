@@ -17,7 +17,7 @@ import (
 type HostRequest struct {
 	Addon     *gonnect.Addon
 	ClientKey string
-	tenant    *store.AtlassianHost
+	Tenant    *store.AtlassianHost
 }
 
 func FromRequest(r *http.Request) (*HostRequest, error) {
@@ -38,13 +38,13 @@ func FromRequest(r *http.Request) (*HostRequest, error) {
 	if err != nil {
 		return nil, err
 	}
-	httpClient.tenant = tenant
+	httpClient.Tenant = tenant
 
 	return httpClient, nil
 }
 
 func (h HostRequest) modifyRequest(req *http.Request) (*http.Request, error) {
-	baseUrl, err := url.Parse(h.tenant.BaseURL)
+	baseUrl, err := url.Parse(h.Tenant.BaseURL)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +72,7 @@ func (h HostRequest) AsAddon(req *http.Request) (*http.Request, error) {
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	signedToken, err := token.SignedString([]byte(h.tenant.SharedSecret))
+	signedToken, err := token.SignedString([]byte(h.Tenant.SharedSecret))
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +91,7 @@ func (h HostRequest) AsUser(req *http.Request, accountId string) (*http.Request,
 	for idx, val := range iScopes {
 		scopes[idx] = val.(string)
 	}
-	token, err := atlasoauth2.GetAccessToken(h.tenant, accountId, scopes)
+	token, err := atlasoauth2.GetAccessToken(h.Tenant, accountId, scopes)
 	if err != nil {
 		return nil, err
 	}
