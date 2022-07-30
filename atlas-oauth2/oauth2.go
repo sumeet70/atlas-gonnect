@@ -59,10 +59,9 @@ func GetAccessToken(tenant *store.AtlassianHost, userAccountId string, scopes []
 		"scope":      {strings.ToUpper(strings.Join(scopes, " "))},
 	}).Encode(), "+", "%20"))
 
-	log.Print(jwtToken)
-
 	req, err := http.NewRequest("POST", AUTHORIZATION_SERVER_URL+"/oauth2/token", reader)
 	if err != nil {
+		log.Print(jwtToken)
 		return "", err
 	}
 
@@ -85,9 +84,8 @@ func GetAccessToken(tenant *store.AtlassianHost, userAccountId string, scopes []
 		return "", err
 	}
 
-	log.Printf("%+v\n", responseBody)
-
 	if val, ok := responseBody["token_type"]; !ok || val != "Bearer" {
+		log.Printf("%+v\n", responseBody)
 		return "", errors.New("response body did not contain a bearer token")
 	}
 
