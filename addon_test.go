@@ -9,12 +9,13 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"github.com/jinzhu/gorm"
 	"github.com/sumeet70/atlas-gonnect/store"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 func TestNewAddon(t *testing.T) {
-	memoryGorm1, err := gorm.Open("sqlite3", ":memory:")
+	memoryGorm1, err := gorm.Open(sqlite.Open(":memory:"))
 	if err != nil {
 		t.Error(err)
 	}

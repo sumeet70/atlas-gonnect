@@ -5,16 +5,12 @@ import (
 	"path"
 	"runtime"
 
-	"github.com/jinzhu/gorm"
 	"github.com/sirupsen/logrus"
+	"gorm.io/gorm"
 
-	_ "github.com/jinzhu/gorm/dialects/postgres"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"gorm.io/driver/postgres"
+	"gorm.io/driver/sqlite"
 )
-
-//import _ "github.com/jinzhu/gorm/dialects/mysql"
-//import _ "github.com/jinzhu/gorm/dialects/postgres"
-//import _ "github.com/jinzhu/gorm/dialects/mssql"
 
 var LOG = logrus.New()
 
@@ -39,7 +35,15 @@ type Store struct {
 
 func New(dbType string, databaseUrl string) (*Store, error) {
 	LOG.Info("Initializing Database Connection")
-	db, err := gorm.Open(dbType, databaseUrl)
+	var dialect gorm.Dialector
+
+	if dbType == "postgres" {
+		dialect = postgres.Open(databaseUrl)
+	} else if dbType == "sqlite" {
+		dialect = sqlite.Open(databaseUrl)
+	}
+
+	db, err := gorm.Open(dialect)
 	if err != nil {
 		return nil, err
 	}
