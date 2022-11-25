@@ -119,7 +119,8 @@ log.Println(response)
 
 ## Author
 
-Fabian Siegel
+Original Author Fabian Siegel
+Additions made by Sumeet Singh
 
 ## License
 
