@@ -36,14 +36,23 @@ type Store struct {
 func New(dbType string, databaseUrl string) (*Store, error) {
 	LOG.Info("Initializing Database Connection")
 	var dialect gorm.Dialector
+	var db *gorm.DB
+	var err error
 
 	if dbType == "postgres" {
 		dialect = postgres.Open(databaseUrl)
+		db, err = gorm.Open(dialect)
 	} else if dbType == "sqlite" {
 		dialect = sqlite.Open(databaseUrl)
+		db, err = gorm.Open(dialect)
+	} else if dbType == "cloudsqlpostgres" {
+		db, err = gorm.Open(postgres.New(postgres.Config{
+			DriverName: dbType,
+			DSN:        databaseUrl}))
+	} else {
+		return nil, fmt.Errorf("unknown database dialect %s", dbType)
 	}
 
-	db, err := gorm.Open(dialect)
 	if err != nil {
 		return nil, err
 	}
